@@ -634,7 +634,15 @@ if (!game.luckyColor) {
         const first = game.records.filter(row => row.pass === 1);
         const second = game.records.filter(row => row.pass === 2);
         const type = analyze(game.records);
-        const report = safeGet(REPORT_KEY) || reportText();
+
+if (!game.luckyColor) {
+  game.luckyColor = COLORS[
+    Math.floor(Math.random() * COLORS.length)
+  ];
+  saveGame();
+}
+
+const report = safeGet(REPORT_KEY) || reportText();
 
         app.innerHTML = `
           <p class="eyebrow">RESULT</p>
