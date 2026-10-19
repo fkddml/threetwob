@@ -19,18 +19,41 @@
     }
 
     * { box-sizing: border-box; }
+@font-face {
+  font-family: "Cafe24PROSlim";
+  src: url("https://cdn.jsdelivr.net/gh/yellopencil/yellopencil-webfonts@v1.22.0/fonts/cafe24-pro-slim/Cafe24PROSlimAir.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: "Cafe24PROSlim";
+  src: url("https://cdn.jsdelivr.net/gh/yellopencil/yellopencil-webfonts@v1.22.0/fonts/cafe24-pro-slim/Cafe24PROSlimFit.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cafe24PROSlim";
+  src: url("https://cdn.jsdelivr.net/gh/yellopencil/yellopencil-webfonts@v1.22.0/fonts/cafe24-pro-slim/Cafe24PROSlimMax.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
     body {
       margin: 0;
       color: var(--ink);
       background:
         radial-gradient(#dcebf1 0.8px, transparent 0.8px) 0 0 / 17px 17px,
         var(--paper);
-      font-family: "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
-      letter-spacing: -0.03em;
+      font-family: "Cafe24PROSlim", sans-serif;
     }
 
-    button, textarea { font: inherit; }
+    button,
+textarea,
+input,
+select {
+  font-family: "Cafe24PROSlim", sans-serif;
+}
     button { color: inherit; cursor: pointer; }
 
     header {
