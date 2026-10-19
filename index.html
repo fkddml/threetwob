@@ -656,7 +656,7 @@ const report = safeGet(REPORT_KEY) || reportText();
           </div>
 
           <section class="panel type-card">
-            <p class="eyebrow">투자 패턴 · 재미로 보는 유형</p>
+            <p class="eyebrow">나의 투자 패턴</p>
             <h2>${type[0]}</h2>
             <p><b>강점</b> · ${type[1]}</p>
             <p><b>다음 팁</b> · ${type[2]}</p>
@@ -666,7 +666,7 @@ const report = safeGet(REPORT_KEY) || reportText();
             <p class="muted">선택 기록으로 만든 규칙 기반 분석이에요.</p>
           </section>
 
-          <h2>탐구 보고서 초안</h2>
+          <h2>기록</h2>
           <textarea id="report">${escapeHtml(report)}</textarea>
           <p>
             <button class="secondary" data-action="download">보고서 TXT</button>
