@@ -183,14 +183,6 @@ select {
     .menu[hidden] { display: none; }
     .menu-wrap { display: flex; align-items: center; gap: 10px; }
     .menu button { min-height: 46px; }
-    .luck-dot {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #789;
-      border-radius: 50%;
-      vertical-align: middle;
-    }
 
     @media (max-width: 650px) {
       header { padding: 8px 12px; }
@@ -345,16 +337,6 @@ select {
       }
     ];
 
-    const COLORS = [
-      ["쿨 블루", "#DCEEFF"],
-      ["라일락", "#E8E1FF"],
-      ["버터 옐로", "#FFF0B5"],
-      ["민트", "#D6F3E6"],
-      ["코랄", "#FFD9D1"],
-      ["베리 핑크", "#F4DCEF"],
-      ["아이스 그레이", "#E6EDF5"]
-    ];
-
     function safeGet(key) {
       try { return localStorage.getItem(key); }
       catch { return null; }
@@ -436,7 +418,6 @@ select {
         game.stage = "teach";
       } else {
         game.stage = "done";
-        game.luckyColor = COLORS[Math.floor(Math.random() * COLORS.length)];
       }
       saveGame();
       render();
@@ -505,12 +486,6 @@ select {
       const end2 = second.at(-1)?.cashOut ?? START_CASH;
     const type = analyze(game.records);
 
-if (!game.luckyColor) {
-  game.luckyColor = COLORS[
-    Math.floor(Math.random() * COLORS.length)
-  ];
-  saveGame();
-}
       return [
         "개인 모의 투자 탐구 기록",
         "① 4라운드 → 투자 기준 설명 → ② 4라운드",
@@ -520,7 +495,6 @@ if (!game.luckyColor) {
         `나의 투자 유형: ${type[0]}`,
         type[1],
         type[2],
-        `오늘의 행운 색: ${game.luckyColor.name}`,
         "",
         "선택 이유:",
         ...game.records.map(row => `${row.pass === 1 ? "①" : "②"} ${row.round}라운드 ${row.reason}`),
@@ -635,12 +609,6 @@ if (!game.luckyColor) {
         const second = game.records.filter(row => row.pass === 2);
         const type = analyze(game.records);
 
-if (!game.luckyColor) {
-  game.luckyColor = COLORS[
-    Math.floor(Math.random() * COLORS.length)
-  ];
-  saveGame();
-}
 
 const report = safeGet(REPORT_KEY) || reportText();
 
@@ -665,9 +633,6 @@ const report = safeGet(REPORT_KEY) || reportText();
             <h2>${type[0]}</h2>
             <p><b>강점</b> · ${type[1]}</p>
             <p><b>다음 팁</b> · ${type[2]}</p>
-            <p><b>오늘의 행운 색</b> · ${game.luckyColor.name}
-  <span class="luck-dot" style="background:${game.luckyColor.hex}"></span>
-</p>
             <p class="muted">선택 기록으로 만든 규칙 기반 분석이에요.</p>
           </section>
 
