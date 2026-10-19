@@ -504,6 +504,15 @@ select {
       const end1 = first.at(-1)?.cashOut ?? START_CASH;
       const end2 = second.at(-1)?.cashOut ?? START_CASH;
       const type = analyze(game.records);
+      const type = analyze(game.records);
+if (!game.luckyColor) {
+  game.luckyColor = COLORS[
+    Math.floor(Math.random() * COLORS.length)
+  ];
+  saveGame();
+}
+
+const report = safeGet(REPORT_KEY) || reportText();
 
       return [
         "개인 모의 투자 탐구 기록",
